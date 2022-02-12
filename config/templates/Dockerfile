@@ -50,6 +50,8 @@ RUN apt-get update \
        gcc-arm-linux-gnueabihf \
        gcc-arm-linux-gnueabi \
        gcc-arm-none-eabi \
+       gcc-aarch64-linux-gnu \
+       g++-aarch64-linux-gnu \
        gdisk \
        git \
        imagemagick \
