@@ -4,7 +4,7 @@ BOOTBRANCH='branch:odroidc-v2011.03'
 BOOTDIR='u-boot-odroidc1'
 UBOOT_COMPILER="arm-linux-gnueabihf-"
 UBOOT_USE_GCC='< 4.9'
-BOOTSCRIPT="boot-odroid-c1.ini:boot.ini"
+
 SERIALCON="ttyAML0"
 UBOOT_TARGET_MAP=';;sd_fuse/bl1.bin.hardkernel sd_fuse/u-boot.bin'
 SRC_LOADADDR='LOADADDR=0x00208000'
@@ -29,8 +29,24 @@ case $BRANCH in
 	;;
 	edge)
 
-		KERNELBRANCH="branch:linux-5.11.y"
-		KERNELPATCHDIR='meson-current'
+		KERNELDIR='linux-meson'
+		KERNELSOURCE='https://github.com/xdarklight/linux'
+		KERNELBRANCH="branch:meson-mx-integration-5.18-20220417"
+		KERNELPATCHDIR='meson-'$BRANCH
+
+	;;
+esac
+
+case $BOARD in
+	odroidc1)
+
+		BOOTSCRIPT="boot-odroid-c1.ini:boot.ini"
+
+	;;
+	onecloud)
+
+		BOOTSCRIPT="boot-onecloud.cmd:boot.cmd"
+		BOOTENV_FILE='onecloud.txt'
 
 	;;
 esac
